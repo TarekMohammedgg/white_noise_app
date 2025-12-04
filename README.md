@@ -34,18 +34,6 @@ A modern ambient sound player with YouTube Music-inspired gradient UI, dark/ligh
 - **Android Studio** ([Download](https://developer.android.com/studio))
 - **Git** ([Download](https://git-scm.com/))
 
-### System Requirements
-- RAM: 4GB minimum (8GB recommended)
-- Disk Space: 7GB
-- Android SDK: API 21+
-
-### Verify Installation
-```bash
-flutter --version
-dart --version
-flutter doctor
-```
-
 ---
 
 ## 📥 Installation
@@ -61,19 +49,6 @@ cd white_noise_app
 
 ```bash
 flutter pub get
-```
-
-### 3. Build for Android
-
-```bash
-# Debug build
-flutter build apk
-
-# Release build
-flutter build apk --release
-
-# App Bundle (for Play Store)
-flutter build appbundle --release
 ```
 
 ---
@@ -185,3 +160,30 @@ dev_dependencies:
 4. **Toggle Theme** - Click sun/moon icon in app bar
 
 ---
+
+## 📞 Contact
+
+Have questions or feedback? Let's connect!
+
+### 📧 Email
+**[tarekmohammedgg@gmail.com](mailto:tarekmohammedgg@gmail.com)**
+
+### 💼 LinkedIn
+**[linkedin.com/in/tarekmohammed](https://www.linkedin.com/in/tarekmohammed/)**
+
+### 🐙 GitHub
+**[@TarekMohammedgg](https://github.com/TarekMohammedgg)**
+
+---
+
+<div align="center">
+
+### Made with ❤️ by [Tarek Mohammed](https://github.com/TarekMohammedgg)
+
+**[Email](mailto:tarekmohammedgg@gmail.com) • [LinkedIn](https://www.linkedin.com/in/tarekmohammed/) • [GitHub](https://github.com/TarekMohammedgg)**
+
+---
+
+**Version**: 2.0 | **Last Updated**: December 2025
+
+</div>
