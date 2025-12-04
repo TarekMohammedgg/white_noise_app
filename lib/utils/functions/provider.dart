@@ -1,77 +1,6 @@
-// import 'package:flutter/material.dart';
-// import 'package:audioplayers/audioplayers.dart';
-
-// class AudioPlayerProvider extends ChangeNotifier {
-//   final AudioPlayer _player = AudioPlayer();
-
-//   bool _isPlaying = false;
-//   Duration _duration = Duration.zero;
-//   Duration _position = Duration.zero;
-//   String? _currentSource;
-
-//   AudioPlayer get player => _player;
-//   bool get isPlaying => _isPlaying;
-//   Duration get duration => _duration;
-//   Duration get position => _position;
-//   String? get currentSource => _currentSource;
-
-//   AudioPlayerProvider() {
-//     _initListeners();
-//   }
-
-//   void _initListeners() {
-//     _player.onPlayerStateChanged.listen((state) {
-//       _isPlaying = state == PlayerState.playing;
-//       notifyListeners();
-//     });
-
-//     _player.onDurationChanged.listen((newDuration) {
-//       _duration = newDuration;
-//       notifyListeners();
-//     });
-
-//     _player.onPositionChanged.listen((newPosition) {
-//       _position = newPosition;
-//       notifyListeners();
-//     });
-//   }
-
-//   Future<void> setAudio(String path) async {
-//     _currentSource = path;
-//     await _player.setSourceAsset(path);
-//     notifyListeners();
-//   }
-
-//   Future<void> play() async {
-//     await _player.resume();
-//     notifyListeners();
-//   }
-
-//   Future<void> pause() async {
-//     await _player.pause();
-//     notifyListeners();
-//   }
-
-//   Future<void> stop() async {
-//     await _player.stop();
-//     notifyListeners();
-//   }
-
-//   Future<void> seek(Duration position) async {
-//     await _player.seek(position);
-//     notifyListeners();
-//   }
-
-//   @override
-//   void dispose() {
-//     _player.dispose();
-//     super.dispose();
-//   }
-// }
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:white_noise_app/features/home/view_model/models/music_model.dart';
+import 'package:white_noise_app/features/home/models/music_model.dart';
 
 class AudioPlayerProvider extends ChangeNotifier {
   AudioPlayer _player = AudioPlayer();
@@ -80,7 +9,7 @@ class AudioPlayerProvider extends ChangeNotifier {
   Duration _duration = Duration.zero;
   String? _currentSource;
   MusicModel? _currentSound;
-
+  bool isSelected = false;
   AudioPlayer get player => _player;
   bool get isPlaying => _isPlaying;
   Duration get position => _position;
@@ -90,6 +19,13 @@ class AudioPlayerProvider extends ChangeNotifier {
 
   AudioPlayerProvider() {
     _initListeners();
+  }
+
+  bool get selectedState => isSelected;
+
+  void setSelectedState(bool selected) {
+    isSelected = selected;
+    notifyListeners();
   }
 
   void setCurrentSound(MusicModel? currentSound) {
@@ -103,13 +39,13 @@ class AudioPlayerProvider extends ChangeNotifier {
       notifyListeners();
     });
 
-    _player.onDurationChanged.listen((newDuration) {
-      _duration = newDuration;
+    _player.onDurationChanged.listen((duration) {
+      _duration = duration;
       notifyListeners();
     });
 
-    _player.onPositionChanged.listen((newPosition) {
-      _position = newPosition;
+    _player.onPositionChanged.listen((position) {
+      _position = position;
       notifyListeners();
     });
   }
@@ -138,6 +74,15 @@ class AudioPlayerProvider extends ChangeNotifier {
 
   Future<void> seek(Duration position) async {
     await _player.seek(position);
+  }
+
+  Future<void> playSound(String audioPath) async {
+    try {
+      await setAudio(audioPath);
+      await play();
+    } catch (e) {
+      debugPrint('Error playing sound: $e');
+    }
   }
 
   @override

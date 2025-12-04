@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:white_noise_app/features/audio_tracker/screens/widgets/custom_slider.dart';
-import 'package:white_noise_app/features/home/view_model/models/music_model.dart';
+import 'package:white_noise_app/features/home/models/music_model.dart';
 import 'package:white_noise_app/utils/functions/functions.dart';
 import 'package:white_noise_app/utils/functions/provider.dart';
 
